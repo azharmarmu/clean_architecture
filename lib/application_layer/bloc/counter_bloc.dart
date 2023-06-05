@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-part 'counter_bloc_event.dart';
+part 'counter_event.dart';
 
 class CounterBloc extends Bloc<CounterEvent, int> {
   int counter = 0;
