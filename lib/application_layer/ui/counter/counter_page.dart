@@ -46,14 +46,18 @@ class CounterPage extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 16),
-            FloatingActionButton(
-              onPressed: () {
-                // _bloc.add(CounterSubEvent());
-                //_cubit.functionSub();
-                context.read<Counter2Cubit>().functionSub();
+            Builder(
+              builder: (context) {
+                return FloatingActionButton(
+                  onPressed: () {
+                    // _bloc.add(CounterSubEvent());
+                    //_cubit.functionSub();
+                    context.read<Counter2Cubit>().functionSub();
+                  },
+                  tooltip: 'Increment',
+                  child: const Icon(Icons.remove),
+                );
               },
-              tooltip: 'Increment',
-              child: const Icon(Icons.remove),
             ),
           ],
         ), // This trailing comma makes auto-formatting nicer for build methods.
