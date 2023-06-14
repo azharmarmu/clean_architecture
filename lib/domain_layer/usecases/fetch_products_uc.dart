@@ -1,0 +1,5 @@
+class FetchProductsUC {
+  void execute(){
+    
+  }
+}
