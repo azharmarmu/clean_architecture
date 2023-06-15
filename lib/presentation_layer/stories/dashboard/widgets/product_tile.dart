@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/app_size.dart';
+import '../../../../domain_layer/entities/product_response_entity.dart';
 
 class ProductTile extends StatelessWidget {
+  final DataEntity data;
   const ProductTile({
     Key? key,
+    required this.data,
   }) : super(key: key);
 
   @override
@@ -18,6 +21,7 @@ class ProductTile extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.amber,
+        image: DecorationImage(image: NetworkImage(data.image)),
         borderRadius: BorderRadius.circular(
           AppSize.cardRadius,
         ),
@@ -28,11 +32,11 @@ class ProductTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('200ml'),
-              Text('\$12'),
+              Text(data.size),
+              Text('\$${data.prize}'),
             ],
           ),
-          Text('Raw pomegranate'),
+          Text(data.pname),
         ],
       ),
     );

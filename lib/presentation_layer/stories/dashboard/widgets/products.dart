@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/app_size.dart';
 import '../../../../core/app_strings.dart';
-import 'product_tile.dart';
+import 'product_loading_state.dart';
+import 'product_success_state.dart';
+import 'product_error_state.dart';
 
 class Products extends StatelessWidget {
   const Products({
@@ -43,20 +45,11 @@ class Products extends StatelessWidget {
           bloc: ProductCubit()..fetchProducts(),
           builder: (BuildContext context, ProductState state) {
             if (state is ProductLoadingState) {
-              return const CircularProgressIndicator.adaptive();
+              return const ProductLoadingWidget();
             } else if (state is ProductSuccessState) {
-              return SizedBox(
-                height: 125,
-                child: ListView.separated(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 4,
-                  itemBuilder: (_, int index) => ProductTile(),
-                  separatorBuilder: (_, int index) => SizedBox(width: 16),
-                ),
-              );
+              return ProductSuccessWidget(enitity: state.entity);
             } else if (state is ProductFailureState) {
-              return const Text('Failed to fetch data');
+              return const ProductErrorWidget();
             }
             return const SizedBox.shrink();
           },
