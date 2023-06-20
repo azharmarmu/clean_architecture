@@ -7,7 +7,9 @@ class ApiClient {
   static const String login = '/Shopnow/Shopnow_api/login';
   static const String fetchProducts = '/Fressery/Fressery_Api/products';
 
-  final dio = Dio(BaseOptions(baseUrl: baseURL));
+  final dio;
+
+  ApiClient({required this.dio});
 
   Future<dynamic> request(String endPoint,
       {Map<String, dynamic>? params}) async {

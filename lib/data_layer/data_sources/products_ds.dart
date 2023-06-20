@@ -1,4 +1,5 @@
 import 'package:clean_architecture/core/app_api.dart';
+import 'package:dio/dio.dart';
 
 import '../models/product_response_model.dart';
 
@@ -9,10 +10,12 @@ abstract class ProductsDS {
 }
 
 class ProductsDSImpl extends ProductsDS {
-  ApiClient apiClient = ApiClient();
+  final ApiClient client;
+
+  ProductsDSImpl({required this.client});
   @override
   Future<ProductResponseModel> fetchProducts() async {
-    final response = await apiClient.request(ApiClient.fetchProducts);
+    final response = await client.request(ApiClient.fetchProducts);
     //convert this response to model
     return ProductResponseModel.fromJson(response);
   }
