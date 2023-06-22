@@ -6,11 +6,9 @@ import '../../domain_layer/repositories/products_repository.dart';
 import '../models/product_response_model.dart';
 
 class ProductsRepositoryImpl extends ProductsRepository {
-  final ProductsDS ds = ProductsDSImpl(
-    client: ApiClient(
-      dio: Dio(BaseOptions(baseUrl: ApiClient.baseURL)),
-    ),
-  );
+  final ProductsDS ds;
+
+  const ProductsRepositoryImpl(this.ds);
   @override
   Future<ProductResponseModel> fetchProducts() async {
     final response = await ds.fetchProducts();
