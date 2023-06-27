@@ -32,11 +32,11 @@ class ProductTile extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(data.size),
-              Text('\$${data.prize}'),
+              Expanded(child: Text(data.size)),
+              Flexible(child: Text('\$${data.prize}')),
             ],
           ),
-          Text(data.pname),
+          FittedBox(child: Text(data.pname)),
         ],
       ),
     );

@@ -10,6 +10,7 @@ class ProductSuccessWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
+      key: const ValueKey('success_product'),
       height: 125,
       child: ListView.separated(
         shrinkWrap: true,
